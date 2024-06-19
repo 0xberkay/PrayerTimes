@@ -7,41 +7,41 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TimesItem(
     @SerialName("Aksam")
-    val aksam: String,
+    val aksam: String?,
     @SerialName("AyinSekliURL")
-    val ayinSekliURL: String,
+    val ayinSekliURL: String?,
     @SerialName("GreenwichOrtalamaZamani")
-    val greenwichOrtalamaZamani: Double,
+    val greenwichOrtalamaZamani: Double?,
     @SerialName("Gunes")
-    val gunes: String,
+    val gunes: String?,
     @SerialName("GunesBatis")
-    val gunesBatis: String,
+    val gunesBatis: String?,
     @SerialName("GunesDogus")
-    val gunesDogus: String,
+    val gunesDogus: String?,
     @SerialName("HicriTarihKisa")
-    val hicriTarihKisa: String,
+    val hicriTarihKisa: String?,
     @SerialName("HicriTarihKisaIso8601")
-    val hicriTarihKisaIso8601: String,
+    val hicriTarihKisaIso8601: String?,
     @SerialName("HicriTarihUzun")
-    val hicriTarihUzun: String,
+    val hicriTarihUzun: String?,
     @SerialName("HicriTarihUzunIso8601")
-    val hicriTarihUzunIso8601: String,
+    val hicriTarihUzunIso8601: String?,
     @SerialName("Ikindi")
-    val ikindi: String,
+    val ikindi: String?,
     @SerialName("Imsak")
-    val imsak: String,
+    val imsak: String?,
     @SerialName("KibleSaati")
-    val kibleSaati: String,
-//    @SerialName("MiladiTarihKisa")
-//    val miladiTarihKisa: String? = null,
-//    @SerialName("MiladiTarihKisaIso8601")
-//    val miladiTarihKisaIso8601: String? = null,
-//    @SerialName("MiladiTarihUzun")
-//    val miladiTarihUzun: String? = null,
-//    @SerialName("MiladiTarihUzunIso8601")
-//    val miladiTarihUzunIso8601: String? = null,
+    val kibleSaati: String?,
+    @SerialName("MiladiTarihKisa")
+    val miladiTarihKisa: String?,
+    @SerialName("MiladiTarihKisaIso8601")
+    val miladiTarihKisaIso8601: String?,
+    @SerialName("MiladiTarihUzun")
+    val miladiTarihUzun: String?,
+    @SerialName("MiladiTarihUzunIso8601")
+    val miladiTarihUzunIso8601: String?,
     @SerialName("Ogle")
-    val ogle: String,
+    val ogle: String?,
     @SerialName("Yatsi")
-    val yatsi: String
+    val yatsi: String?
 )

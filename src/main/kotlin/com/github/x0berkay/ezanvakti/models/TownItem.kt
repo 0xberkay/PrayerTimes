@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CountiesItem(
+data class TownItem(
     @SerialName("IlceAdi")
     val ilceAdi: String,
     @SerialName("IlceAdiEn")

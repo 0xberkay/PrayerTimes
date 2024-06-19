@@ -14,6 +14,11 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 @State(name = "com.github.x0berkay.ezanvakti.settings.AppSettingsState", storages = [Storage("EzanVaktiPlugin.xml")])
 class AppSettingsState : PersistentStateComponent<AppSettingsState?> {
     var country: String = ""
+    var city: String = ""
+    var town: String = ""
+    var townId: Int = 0
+
+
     override fun getState(): AppSettingsState {
         return this
     }
