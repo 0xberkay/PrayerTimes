@@ -7,6 +7,7 @@ import com.intellij.ui.components.JBLabel
 import com.intellij.util.ui.FormBuilder
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
+import java.util.*
 import javax.swing.JPanel
 import javax.swing.event.PopupMenuEvent
 
@@ -17,10 +18,12 @@ class AppSettingsComponent {
     val panel: JPanel
     private val pickCity: ComboBox<String> = ComboBox()
     private val pickTown: ComboBox<String> = ComboBox()
+    private val pickLanguage: ComboBox<String> = ComboBox()
     private var country: String = ""
     private var city: String = ""
     private var town: String = ""
     var townId = 0
+    private var language: String = "en"
 
     private var cityItems = mutableListOf<CitiesItem>()
 
@@ -37,16 +40,26 @@ class AppSettingsComponent {
         for (city in cityItems) {
             pickCity.addItem(city.sehirAdi)
         }
+
+        pickLanguage.addItem("en")
+        pickLanguage.addItem("tr")
+        val appSettingsState = AppSettingsState.instance
+
+        val lang = if (appSettingsState.language == "tr") Locale.forLanguageTag("tr-TR") else Locale.forLanguageTag("en-US")
+        val bundle = ResourceBundle.getBundle("messages",lang)
+
         panel = FormBuilder.createFormBuilder()
-            .addLabeledComponent(JBLabel("Şehir"), pickCity, 1, false)
-            .addLabeledComponent(JBLabel("İlçe"), pickTown, 1, false)
+            .addLabeledComponent(JBLabel(bundle.getString("settings.city")), pickCity, 1, false)
+            .addLabeledComponent(JBLabel(bundle.getString("settings.town")), pickTown, 1, false)
+            .addSeparator()
+            .addLabeledComponent(JBLabel(bundle.getString("settings.language")), pickLanguage, 1, false)
             .addComponentFillVertically(JPanel(), 0)
             .panel
 
-        val appSettingsState = AppSettingsState.instance
         country = appSettingsState.country
         city = appSettingsState.city
         town = appSettingsState.town
+        language = appSettingsState.language
 
 
         //set selected
@@ -54,6 +67,9 @@ class AppSettingsComponent {
 
         //just set text for town
         pickTown.addItem(town)
+
+
+        pickLanguage.selectedIndex = if (language == "en") 0 else 1
 
 
 
@@ -88,6 +104,12 @@ class AppSettingsComponent {
 //                Messages.showMessageDialog(null, timesString, "Ezan Times", Messages.getInformationIcon())
             }
         })
+
+        pickLanguage.addPopupMenuListener(object : CustomListener() {
+            override fun popupMenuWillBecomeInvisible(e: PopupMenuEvent) {
+                language = pickLanguage.selectedItem?.toString() ?: "en"
+            }
+        })
     }
 
 
@@ -101,6 +123,11 @@ class AppSettingsComponent {
         get() = town
         set(value) {
             town = value
+        }
+    var preferredFocusedComponentLanguage: String
+        get() = language
+        set(value) {
+            language = value
         }
 
 

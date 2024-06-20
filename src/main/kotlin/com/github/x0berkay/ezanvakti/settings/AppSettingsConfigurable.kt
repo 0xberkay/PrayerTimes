@@ -5,6 +5,7 @@ import com.github.x0berkay.ezanvakti.reader.PrayerTimesReader
 import com.intellij.openapi.options.Configurable
 import org.jetbrains.annotations.Nls
 import javax.swing.JComponent
+import com.intellij.openapi.project.ProjectManager
 
 /**
  * Provides controller functionality for application settings.
@@ -27,21 +28,30 @@ class AppSettingsConfigurable : Configurable {
         val settings = AppSettingsState.instance
         val city = mySettingsComponent!!.preferredFocusedComponentCity
         val town = mySettingsComponent!!.preferredFocusedComponentTown
+        val language = mySettingsComponent!!.preferredFocusedComponentLanguage
 
-        return  city != settings.city || town != settings.town
+        return  city != settings.city || town != settings.town || language != settings.language
     }
 
     override fun apply() {
         val settings = AppSettingsState.instance
+
+        if (mySettingsComponent!!.townId != settings.townId) {
+            val times = Client().getTimes(settings.townId.toString())
+            //save times to state
+            val reader = PrayerTimesReader()
+            reader.writePrayerTimes(times)
+        }
         //val timesState = TimesState.instance
         settings.city = mySettingsComponent!!.preferredFocusedComponentCity
         settings.town = mySettingsComponent!!.preferredFocusedComponentTown
         settings.townId = mySettingsComponent!!.townId
+        settings.language = mySettingsComponent!!.preferredFocusedComponentLanguage
 
-        val times = Client().getTimes(settings.townId.toString())
-        //save times to state
-        val reader = PrayerTimesReader()
-        reader.writePrayerTimes(times)
+        val project = ProjectManager.getInstance().openProjects.firstOrNull()
+        if (project != null) {
+            requestRestart(project)
+        }
     }
 
     override fun reset() {
@@ -49,6 +59,7 @@ class AppSettingsConfigurable : Configurable {
         mySettingsComponent!!.preferredFocusedComponentCity = settings.city
         mySettingsComponent!!.preferredFocusedComponentTown = settings.town
         mySettingsComponent!!.townId = settings.townId
+        mySettingsComponent!!.preferredFocusedComponentLanguage = settings.language
 
     }
 
@@ -56,3 +67,4 @@ class AppSettingsConfigurable : Configurable {
         mySettingsComponent = null
     }
 }
+

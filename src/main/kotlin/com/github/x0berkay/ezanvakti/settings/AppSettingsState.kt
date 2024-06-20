@@ -17,6 +17,7 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState?> {
     var city: String = ""
     var town: String = ""
     var townId: Int = 0
+    var language: String = "en"
 
 
     override fun getState(): AppSettingsState {

@@ -5,19 +5,28 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>EzanVakti</name>
+    <name>Prayer Times</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="o200706008@gmail.com" url="https://www.yourcompany.com">0xberkay</vendor>
+    <vendor email="me@zbd.com.tr" url="https://zbd.com.tr">0xberkay</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
         <p>
-            Ezan Vakti plugini ile ezan vakitlerini görebilirsiniz.
+            Prayer Time Plugin
         </p>
-
+        <p>
+            You can select city and district from the settings.
+        <p>
+           You can see the prayer times by pressing Ctrl + Shift + E keys.
+        <p>
+        <p>
+            <a href="mailto:me@zbd.com.tr">
+                Contact
+            </a>
+        </p>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
@@ -37,7 +46,7 @@
         <action id="dialog.ShowCurrentPrayerTimeDialog"
                 class="dialog.ShowCurrentPrayerTimeDialog"
                 text="Open Dialog"
-                description="Open a dialog">
+                description="Open a dialog for show prayer times">
             <keyboard-shortcut first-keystroke="shift alt E" keymap="$default"/>
         </action>
     </actions>

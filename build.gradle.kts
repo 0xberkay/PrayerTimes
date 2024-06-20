@@ -37,9 +37,10 @@ tasks {
   }
 
   patchPluginXml {
-    sinceBuild.set("233.0")
-    untilBuild.set("233.*")
+    sinceBuild.set("233.0") // Adjust this to match the required build number range for compatibility
+    untilBuild.set("241.*") // Set the upper limit for the build range
   }
+
 
   signPlugin {
     certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))

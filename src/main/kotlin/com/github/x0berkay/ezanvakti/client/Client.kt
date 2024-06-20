@@ -43,6 +43,7 @@ class Client {
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
 
         val timesItems = json.decodeFromString(ListSerializer(TimesItem.serializer()), response.body())
+        println("timesItems: $timesItems")
         return timesItems
     }
 }
