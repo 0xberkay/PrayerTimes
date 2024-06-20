@@ -48,10 +48,10 @@ class AppSettingsConfigurable : Configurable {
         settings.townId = mySettingsComponent!!.townId
         settings.language = mySettingsComponent!!.preferredFocusedComponentLanguage
 
-        val project = ProjectManager.getInstance().openProjects.firstOrNull()
-        if (project != null) {
-            requestRestart(project)
-        }
+//        val project = ProjectManager.getInstance().openProjects.firstOrNull()
+//        if (project != null) {
+//            requestRestart(project)
+//        }
     }
 
     override fun reset() {
