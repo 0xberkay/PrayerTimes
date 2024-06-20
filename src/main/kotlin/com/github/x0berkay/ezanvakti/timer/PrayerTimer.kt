@@ -1,7 +1,7 @@
 package com.github.x0berkay.ezanvakti.timer
 
 import com.github.x0berkay.ezanvakti.settings.AppSettingsState
-import utils.SoundService
+import com.github.x0berkay.ezanvakti.utils.SoundService
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages

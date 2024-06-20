@@ -1,4 +1,4 @@
-package utils
+package com.github.x0berkay.ezanvakti.utils
 
 import javax.sound.sampled.AudioInputStream
 import javax.sound.sampled.AudioSystem

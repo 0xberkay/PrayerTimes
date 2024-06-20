@@ -92,16 +92,6 @@ class AppSettingsComponent {
                 val selectedItem = client.getTowns(cityItems[pickCity.selectedIndex].sehirID)[pickTown.selectedIndex]
                 town = pickTown.selectedItem?.toString() ?: ""
                 townId = selectedItem.ilceID.toIntOrNull() ?: 0
-
-//                val times = TimesState.instance.items
-//
-//                // Convert times to string
-//                val timesString = times.joinToString(separator = "\n") { time ->
-//                    "Imsak: ${time.imsak}, Gunes: ${time.gunes}, Ogle: ${time.ogle}, Ikindi: ${time.ikindi}, Aksam: ${time.aksam}, Yatsi: ${time.yatsi}, MiladiTarihKisa: ${time.miladiTarihKisa}, HicriTarihKisa: ${time.hicriTarihKisa}"
-//                }
-//
-//                // Show times in dialog
-//                Messages.showMessageDialog(null, timesString, "Ezan Times", Messages.getInformationIcon())
             }
         })
 

@@ -43,10 +43,10 @@
 
     </extensions>
     <actions>
-        <action id="dialog.ShowCurrentPrayerTimeDialog"
-                class="dialog.ShowCurrentPrayerTimeDialog"
+        <action id="com.github.x0berkay.ezanvakti.dialog.ShowCurrentPrayerTimeDialog"
+                class="com.github.x0berkay.ezanvakti.dialog.ShowCurrentPrayerTimeDialog"
                 text="Open Dialog"
-                description="Open a dialog for show prayer times">
+                description="Open a com.github.x0berkay.ezanvakti.dialog for show prayer times">
             <keyboard-shortcut first-keystroke="shift alt E" keymap="$default"/>
         </action>
     </actions>

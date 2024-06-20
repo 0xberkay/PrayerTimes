@@ -1,4 +1,4 @@
-package dialog
+package com.github.x0berkay.ezanvakti.dialog
 
 import com.github.x0berkay.ezanvakti.reader.PrayerTimesService
 import com.github.x0berkay.ezanvakti.settings.AppSettingsState

@@ -1,4 +1,4 @@
-package utils
+package com.github.x0berkay.ezanvakti.utils
 
 object DateHelper {
     private const val DATE_FORMAT = "dd.MM.yyyy"

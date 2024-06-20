@@ -3,7 +3,7 @@ package com.github.x0berkay.ezanvakti.reader
 import com.github.x0berkay.ezanvakti.client.Client
 import com.github.x0berkay.ezanvakti.models.TimesItem
 import com.github.x0berkay.ezanvakti.settings.AppSettingsState
-import utils.DateHelper
+import com.github.x0berkay.ezanvakti.utils.DateHelper
 import java.util.*
 
 class PrayerTimesService {

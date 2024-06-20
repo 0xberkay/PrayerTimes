@@ -3,10 +3,9 @@ package com.github.x0berkay.ezanvakti.timer
 
 import com.github.x0berkay.ezanvakti.reader.PrayerTimesService
 import com.github.x0berkay.ezanvakti.settings.AppSettingsState
-import utils.DateHelper
+import com.github.x0berkay.ezanvakti.utils.DateHelper
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
-import com.intellij.openapi.startup.StartupActivity
 import java.util.*
 
 class PrayerTimeStartupActivity : ProjectActivity {
