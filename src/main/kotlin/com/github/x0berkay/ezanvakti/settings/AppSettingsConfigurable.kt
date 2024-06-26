@@ -29,8 +29,9 @@ class AppSettingsConfigurable : Configurable {
         val city = mySettingsComponent!!.preferredFocusedComponentCity
         val town = mySettingsComponent!!.preferredFocusedComponentTown
         val language = mySettingsComponent!!.preferredFocusedComponentLanguage
+        val timeBefore = mySettingsComponent!!.preferredFocusedComponentTimeBefore
 
-        return  city != settings.city || town != settings.town || language != settings.language
+        return city != settings.city || town != settings.town || language != settings.language || timeBefore != settings.timeBefore
     }
 
     override fun apply() {
@@ -47,6 +48,7 @@ class AppSettingsConfigurable : Configurable {
         settings.town = mySettingsComponent!!.preferredFocusedComponentTown
         settings.townId = mySettingsComponent!!.townId
         settings.language = mySettingsComponent!!.preferredFocusedComponentLanguage
+        settings.timeBefore = mySettingsComponent!!.preferredFocusedComponentTimeBefore
 
         val project = ProjectManager.getInstance().openProjects.firstOrNull()
         if (project != null) {
@@ -60,6 +62,7 @@ class AppSettingsConfigurable : Configurable {
         mySettingsComponent!!.preferredFocusedComponentTown = settings.town
         mySettingsComponent!!.townId = settings.townId
         mySettingsComponent!!.preferredFocusedComponentLanguage = settings.language
+        mySettingsComponent!!.preferredFocusedComponentTimeBefore = settings.timeBefore
 
     }
 

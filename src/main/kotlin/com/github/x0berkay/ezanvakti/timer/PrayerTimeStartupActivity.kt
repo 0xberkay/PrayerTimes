@@ -34,7 +34,7 @@ class PrayerTimeStartupActivity : ProjectActivity {
         if (prayerTime == null) {
             return
         }
-        val calendar = DateHelper.parsePrayerTime(prayerTime)
+        val calendar = DateHelper.parsePrayerTime(prayerTime, AppSettingsState.instance.timeBefore)
         //println("Scheduling prayer time: $prayerTime")
         //println("calendar: ${calendar.timeInMillis}")
         //check if the time is in the past
