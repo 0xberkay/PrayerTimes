@@ -12,6 +12,8 @@ import java.awt.Dimension
 import java.awt.FlowLayout
 import java.awt.event.KeyEvent
 import java.util.*
+import javax.swing.JButton
+import javax.swing.JFileChooser
 import javax.swing.JPanel
 import javax.swing.event.PopupMenuEvent
 
@@ -21,12 +23,14 @@ class AppSettingsComponent {
     private val pickTown: ComboBox<String> = ComboBox()
     private val pickLanguage: ComboBox<String> = ComboBox()
     private val pickTimeBefore: JBTextField = JBTextField()
+    private val soundPanel = JPanel(FlowLayout(FlowLayout.LEFT))
     private var country: String = ""
     private var city: String = ""
     private var town: String = ""
     var townId = 0
     private var language: String = "en"
     private var timeBefore = 0
+    private var pickedSound: String = ""
 
     private var cityItems = mutableListOf<CitiesItem>()
 
@@ -70,12 +74,16 @@ class AppSettingsComponent {
             add(pickLanguage)
         }
 
+
+
         panel = FormBuilder.createFormBuilder()
             .addComponent(cityPanel)
             .addComponent(townPanel)
             .addComponent(timeBeforePanel)
             .addSeparator()
             .addComponent(languagePanel)
+            .addSeparator()
+            .addComponent(soundPanel)
             .addComponentFillVertically(JPanel(), 0)
             .panel
 
@@ -86,6 +94,42 @@ class AppSettingsComponent {
         town = appSettingsState.town
         language = appSettingsState.language
         timeBefore = appSettingsState.timeBefore
+        pickedSound = appSettingsState.pickedSound
+
+        soundPanel.apply {
+            val pickSound = JBTextField()
+            val pickSoundButton = JButton("...")
+            pickSoundButton.addActionListener {
+                val fileChooser = JFileChooser()
+                fileChooser.fileSelectionMode = JFileChooser.FILES_ONLY
+                //only allow .wav files
+                fileChooser.fileFilter = object : javax.swing.filechooser.FileFilter() {
+                    override fun accept(f: java.io.File): Boolean {
+                        return f.isDirectory || f.name.endsWith(".wav")
+                    }
+
+                    override fun getDescription(): String {
+                        return "WAV files"
+                    }
+                }
+                fileChooser.isMultiSelectionEnabled = false
+                fileChooser.showOpenDialog(null)
+                val selectedFile = fileChooser.selectedFile
+                if (selectedFile != null) {
+                    pickSound.text = selectedFile.absolutePath
+                    pickedSound = selectedFile.absolutePath
+                }
+            }
+            add(JBLabel(bundle.getString("settings.sound")))
+            add(pickSound)
+            add(pickSoundButton)
+        }
+
+        soundPanel.components.forEach {
+            if (it is JBTextField) {
+                it.text = pickedSound
+            }
+        }
 
         pickTimeBefore.text = timeBefore.toString()
 
@@ -128,6 +172,8 @@ class AppSettingsComponent {
                 }
             }
         })
+
+        //add listener for sound picker
     }
 
     var preferredFocusedComponentCity: String
@@ -150,6 +196,12 @@ class AppSettingsComponent {
         get() = timeBefore
         set(value) {
             timeBefore = value
+        }
+
+    var preferredFocusedComponentSound: String
+        get() = pickedSound
+        set(value) {
+            pickedSound = value
         }
 
     private fun getResourceAsText(path: String): String? =

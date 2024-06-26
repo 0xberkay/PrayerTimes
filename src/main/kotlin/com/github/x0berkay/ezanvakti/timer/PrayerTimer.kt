@@ -17,7 +17,7 @@ class PrayerTimer(
         val lang = if (config.language == "tr") Locale.forLanguageTag("tr-TR") else Locale.forLanguageTag("en-US")
         val bundle = ResourceBundle.getBundle("messages",lang)
         ApplicationManager.getApplication().invokeLater {
-            SoundService.playSound()
+            SoundService.playSound(config.pickedSound.ifEmpty { null })
             //show notification
             Messages.showMessageDialog(project, timeText, bundle.getString("timer.text"), Messages.getInformationIcon())
         }
