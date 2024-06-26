@@ -14,9 +14,11 @@ class ShowCurrentPrayerTimeDialog : AnAction() {
         val bundle = ResourceBundle.getBundle("messages",lang)
 
         val currentPrayerTime = PrayerTimesService().getCurrentPrayerTime()
+        //get next prayer time
+        val nextPrayerTime = PrayerTimesService().getNextPrayerTime(currentPrayerTime,bundle)
         if (currentPrayerTime != null) {
             Messages.showMessageDialog(
-                "${bundle.getString("dialog.prayerTimes")}\n" +
+                "${bundle.getString("dialog.prayerTimes")} ${nextPrayerTime}\n" +
                         "${bundle.getString("dialog.fajr")}: ${currentPrayerTime.imsak}\n" +
                         "${bundle.getString("dialog.sunrise")}: ${currentPrayerTime.gunes}\n" +
                         "${bundle.getString("dialog.dhuhr")}: ${currentPrayerTime.ogle}\n" +
