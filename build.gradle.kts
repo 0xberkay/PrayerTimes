@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.github.x0berkay"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
   mavenCentral()
@@ -45,7 +45,7 @@ tasks {
   signPlugin {
     certificateChainFile.set(file("chain.crt"))
     privateKeyFile.set(file("private.pem"))
-    password.set("lapazq")
+    password.set(System.getenv("PASSWORD"))
 
   }
 
