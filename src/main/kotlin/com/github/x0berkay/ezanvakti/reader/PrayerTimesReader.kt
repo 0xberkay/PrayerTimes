@@ -11,7 +11,11 @@ class PrayerTimesReader {
     private val fileName = "EzanTimes.json"
     private val filePath = PathManager.getOptionsPath() + File.separator + fileName
     fun readPrayerTimes():  List<TimesItem> {
+        //check is file exists
 
+        if (!File(filePath).exists()) {
+            return emptyList()
+        }
         val file = File(filePath)
 
         val fileContent = file.readText()
