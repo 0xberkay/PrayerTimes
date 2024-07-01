@@ -6,14 +6,15 @@ import com.github.x0berkay.ezanvakti.settings.AppSettingsState
 import com.github.x0berkay.ezanvakti.utils.DateHelper
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
-import com.intellij.openapi.ui.Messages
-import java.text.MessageFormat
 import java.util.*
 
 class PrayerTimeStartupActivity : ProjectActivity {
     private var project: Project? = null
     override suspend fun execute(project: Project) {
         this.project = project
+        //delete all previous scheduled tasks
+        Timer().cancel()
+
 
         //find the current prayer time
         val currentPrayerTime = PrayerTimesService().getCurrentPrayerTime()
@@ -36,11 +37,12 @@ class PrayerTimeStartupActivity : ProjectActivity {
         if (prayerTime == null) {
             return
         }
-        val calendar = DateHelper.parsePrayerTime(prayerTime, AppSettingsState.instance.timeBefore)
-        //println("Scheduling prayer time: $prayerTime")
-        //println("calendar: ${calendar.timeInMillis}")
+        val current = Calendar.getInstance()
+
+        val calendar = DateHelper.parsePrayerTime(prayerTime, AppSettingsState.instance.timeBefore, current)
+
         //check if the time is in the past
-        if (calendar.timeInMillis < System.currentTimeMillis()) {
+        if (calendar.before(current)) {
             return
         }
 
