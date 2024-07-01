@@ -5,6 +5,7 @@ import com.github.x0berkay.ezanvakti.utils.SoundService
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
+import java.text.MessageFormat
 import java.util.*
 
 
@@ -19,7 +20,9 @@ class PrayerTimer(
         ApplicationManager.getApplication().invokeLater {
             SoundService.playSound(config.pickedSound.ifEmpty { null })
             //show notification
-            Messages.showMessageDialog(project, timeText, bundle.getString("timer.text"), Messages.getInformationIcon())
+            val message = MessageFormat.format(bundle.getString("dialog.message"), config.timeBefore)
+
+            Messages.showMessageDialog(project, timeText, message, Messages.getInformationIcon())
         }
     }
 }

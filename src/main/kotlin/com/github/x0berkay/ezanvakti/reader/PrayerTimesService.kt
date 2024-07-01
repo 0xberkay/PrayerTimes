@@ -27,7 +27,7 @@ class PrayerTimesService {
         return currentPrayerTime
     }
 
-    fun getNextPrayerTime(currentPrayerTime: TimesItem?, bundle: ResourceBundle): String {
+    fun getNextPrayerTime(currentPrayerTime: TimesItem?, bundle: ResourceBundle): String? {
         val calendar = Calendar.getInstance()
         val getTime = { time: String -> DateHelper.nextPrayerTime(time) }
         val prayerTimes = mapOf(
@@ -49,6 +49,10 @@ class PrayerTimesService {
         val diff = nextPrayerTime?.value?.timeInMillis?.minus(calendar.timeInMillis) ?: 0
         val diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(diff)
 
-        return "${nextPrayerTime?.key} $diffInMinutes ${bundle.getString("dialog.minutes")}"
+        return if (nextPrayerTime != null) {
+            "${nextPrayerTime.key}: ${DateHelper.timeFormatter.format(nextPrayerTime.value)} - $diffInMinutes ${bundle.getString("dialog.minutes")}"
+        } else {
+            null
+        }
     }
 }

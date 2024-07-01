@@ -11,14 +11,18 @@ class ShowCurrentPrayerTimeDialog : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val config = AppSettingsState.instance
         val lang = if (config.language == "tr") Locale.forLanguageTag("tr-TR") else Locale.forLanguageTag("en-US")
-        val bundle = ResourceBundle.getBundle("messages",lang)
+        val bundle = ResourceBundle.getBundle("messages", lang)
 
         val currentPrayerTime = PrayerTimesService().getCurrentPrayerTime()
         //get next prayer time
-        val nextPrayerTime = PrayerTimesService().getNextPrayerTime(currentPrayerTime,bundle)
+        val nextPrayerTime = PrayerTimesService().getNextPrayerTime(currentPrayerTime, bundle)
         if (currentPrayerTime != null) {
             Messages.showMessageDialog(
-                "${bundle.getString("dialog.prayerTimes")} ${nextPrayerTime}\n" +
+                if (nextPrayerTime != null) {
+                    "${bundle.getString("dialog.nextPrayer")}: $nextPrayerTime\n"
+                } else {
+                    ""
+                } +
                         "${bundle.getString("dialog.fajr")}: ${currentPrayerTime.imsak}\n" +
                         "${bundle.getString("dialog.sunrise")}: ${currentPrayerTime.gunes}\n" +
                         "${bundle.getString("dialog.dhuhr")}: ${currentPrayerTime.ogle}\n" +
