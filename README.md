@@ -2,6 +2,11 @@
 
 ![Logo](https://private-user-images.githubusercontent.com/70816926/341532878-35e56eef-49b3-4b8c-b36f-3917e937c33d.svg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTg5MTA0NzMsIm5iZiI6MTcxODkxMDE3MywicGF0aCI6Ii83MDgxNjkyNi8zNDE1MzI4NzgtMzVlNTZlZWYtNDliMy00YjhjLWIzNmYtMzkxN2U5MzdjMzNkLnN2Zz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA2MjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNjIwVDE5MDI1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEzZDYwYmQyNzhlYjI2ZmUxZTU2OGUzNDhhYzFmMThjNjhlYzBiN2IwOGM0YjllYzFjYTE4ZWE4ZDZiZWEzNTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.IgTbPLoxHlc7okgMyBqqRWtrUeVVfajRisT_cYJv9Iw)
 
+<script src="https://plugins.jetbrains.com/assets/scripts/mp-widget.js"></script>
+<script>
+  // Please, replace #yourelement with a real element id on your webpage
+  MarketplaceWidget.setupMarketplaceWidget('install', 24677, "#yourelement");
+</script>
 ## Description
 
 This is a plugin developed for IntelliJ IDEA. It is written in Kotlin and Java, and built with Gradle. The plugin provides prayer times based on the user's location settings.
