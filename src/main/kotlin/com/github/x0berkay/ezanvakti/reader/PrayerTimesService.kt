@@ -50,7 +50,7 @@ class PrayerTimesService {
         val diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(diff)
 
         return if (nextPrayerTime != null) {
-            "${nextPrayerTime.key}: ${DateHelper.timeFormatter.format(nextPrayerTime.value)} - $diffInMinutes ${bundle.getString("dialog.minutes")}"
+            "${nextPrayerTime.key}: ${DateHelper.timeFormatter.format(nextPrayerTime.value.time)} - $diffInMinutes ${bundle.getString("dialog.minutes")}"
         } else {
             null
         }
